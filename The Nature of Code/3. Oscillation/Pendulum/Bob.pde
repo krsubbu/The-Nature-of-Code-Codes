@@ -30,7 +30,7 @@ class Bob {
     
     x = length*sin(theta);
     y = length*cos(theta);
-    thetaAcc = -0.01* sin(theta)/mass;
+    thetaAcc = -1* sin(theta)/length;
     theta += thetaVel;
     thetaVel += thetaAcc;
     
