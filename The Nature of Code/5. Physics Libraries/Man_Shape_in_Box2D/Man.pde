@@ -15,15 +15,17 @@ class Man{
     bd.position.set(box2d.coordPixelsToWorld(mouseX,mouseY));
     body = box2d.createBody(bd);
     
+    CircleShape cs = new CircleShape();
+    cs.m_radius = box2d.scalarPixelsToWorld(r/2);
+    //this line is very important
+    //it create a offset to the circle and rectanlge which tell box2d its boundaries.
+    Vec2 offset = new Vec2(0,-h/2);
+    cs.m_p.set(box2d.vectorPixelsToWorld(offset));
+    
     PolygonShape ps = new PolygonShape();
     float boxW = box2d.scalarPixelsToWorld(w/2);
     float boxH = box2d.scalarPixelsToWorld(h/2);
     ps.setAsBox(boxW,boxH);
-    
-    Vec2 offset = new Vec2(0,-h/2);
-    CircleShape cs = new CircleShape();
-    cs.m_radius = box2d.scalarPixelsToWorld(r/2);
-    cs.m_p.set(offset.x,offset.y);
     
     body.createFixture(ps,1);
     body.createFixture(cs,1); 
@@ -39,8 +41,9 @@ class Man{
     fill(200);
     stroke(0);
     strokeWeight(1);
+    rectMode(CENTER);
     rect(0,0,w,h);
-    ellipse(0,0,r,r);
+    ellipse(0,-h/2,r,r);
     popMatrix();    
   }
 }
