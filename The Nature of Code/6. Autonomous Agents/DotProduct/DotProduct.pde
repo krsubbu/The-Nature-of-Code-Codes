@@ -16,17 +16,19 @@ void draw() {
   fill(0);
   ellipse(a.x, a.y, 10, 10);
   ellipse(b.x, b.y, 10, 10);
-  fill(255, 0, 0);
-  noStroke();
-  ellipse(mouse.x, mouse.y, 10, 10);
+  
   
   PVector normal = projection(a,b,mouse);
-  fill(0,255,0);
-  ellipse(normal.x,normal.y,10,10);
   noFill();
   stroke(0);
   strokeWeight(1);
   line(mouse.x,mouse.y,normal.x,normal.y);
+  fill(0,255,0);
+  ellipse(normal.x,normal.y,10,10);
+  fill(255, 0, 0);
+  noStroke();
+  ellipse(mouse.x, mouse.y, 10, 10);
+  
   
 }
 
