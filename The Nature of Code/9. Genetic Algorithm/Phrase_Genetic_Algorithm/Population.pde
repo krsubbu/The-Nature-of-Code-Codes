@@ -5,11 +5,12 @@ class Population {
   String target = "to be or not to be";
   float mutationRate;
   int generation = 0;
-
+  int totalPopulation = 200;
+  
   Population() {
     mutationRate = 0.001;
 //Creating pool of various DNA elements.
-    population = new DNA[100];
+    population = new DNA[totalPopulation];
     //Initializing all population.
     for (int i=0; i<population.length; i++) {
       population[i] = new DNA();
@@ -69,7 +70,8 @@ class Population {
     }
     return best;
   }
-  void display(){
+  
+  boolean display(){
     float index = bestPhrase();
     
     String d = "Best Phrase: ";
@@ -78,6 +80,8 @@ class Population {
     textSize(16);
     
     DNA b = population[(int)index];
+    float num = population[(int)index].fitness;
+    float n = (num/18)*100;
     String s = "";
     for(int i=0;i<b.genes.length;i++){
         s += b.genes[i];
@@ -96,11 +100,16 @@ class Population {
     String f = "Fitness: ";
     textSize(15);
     text(f,10,height/2+20);
+    text(n,80,height/2+20);
     
     String p = "Population: ";
     textSize(15);
     text(p,10,height/2+40);
+    text(totalPopulation,100,height/2+40);
     
-    
+    if(n ==100.00){
+      return true;
+    }
+    return false;
   }
 }

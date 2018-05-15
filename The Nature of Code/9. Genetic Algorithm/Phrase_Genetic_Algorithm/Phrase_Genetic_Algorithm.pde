@@ -11,7 +11,8 @@ void draw() {
   population.generate();
   population.calcFitness();
   
-  population.display();
-  
-  
+  if(population.display()){
+    noLoop();
+  }
+ 
 }
