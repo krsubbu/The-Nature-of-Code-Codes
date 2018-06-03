@@ -23,6 +23,16 @@ class Matrix {
       }
     }
   }
+  
+  Matrix transpose(){
+    Matrix m = new Matrix(col,row);
+    for (int i=0; i<col; i++) {
+      for (int j=0; j<row; j++) {
+        m.matrix[i][j] = matrix[j][i];
+      }
+    }
+    return m;
+  }
 
   Matrix multiply(Matrix m) {
     if(col != m.row){
